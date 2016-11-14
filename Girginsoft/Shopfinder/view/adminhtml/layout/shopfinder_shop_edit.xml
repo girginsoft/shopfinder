@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+     <update handle="editor"/>
+    <body>
+	   <referenceContainer name="content">
+            <block class="Girginsoft\Shopfinder\Block\Adminhtml\Shop\Edit" name="shopfinder_shop_edit"/>
+        </referenceContainer>
+		 <referenceContainer name="left">
+            <block class="Girginsoft\Shopfinder\Block\Adminhtml\Shop\Edit\Tabs" name="shopfinder_shop_edit_tabs">
+				<block class="Girginsoft\Shopfinder\Block\Adminhtml\Shop\Edit\Tab\Shop" name="shopfinder_shop_edit_tab_shop"/>
+				 <action method="addTab">
+                    <argument name="name" xsi:type="string">shop_section</argument>
+                    <argument name="block" xsi:type="string">shopfinder_shop_edit_tab_shop</argument>
+                </action>
+				<!--CedAddTab-->
+			</block>
+        </referenceContainer>
+    </body>
+</page>
