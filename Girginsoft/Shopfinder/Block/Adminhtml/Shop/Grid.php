@@ -191,7 +191,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
             }
             $options[$country["value"]] = $country["label"];
         }
-        var_dump($options);
+        //var_dump($options);
 
         $this->addColumn(
             'country',
