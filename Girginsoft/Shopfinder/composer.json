@@ -1,0 +1,13 @@
+{
+  "name": "girginsoft/module-shopfinder",
+  "description": "Shopfinder module for challenge",
+  "type": "magento2-module",
+  "extra": {
+    "map": [
+      [
+        "*",
+        "Girginsoft/Shopfinder"
+      ]
+    ]
+  }
+}
