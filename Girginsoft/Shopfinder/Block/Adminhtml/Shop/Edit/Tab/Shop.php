@@ -100,10 +100,10 @@ class Shop extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
 
 
         $fieldset->addField(
-            'store_ids',
-            'select',
+            'store_id',
+            'multiselect',
             [
-                'name'     => 'store_ids',
+                'name'     => 'store_id[]',
                 'label'    => __('Store Views'),
                 'title'    => __('Store Views'),
                 'required' => true,

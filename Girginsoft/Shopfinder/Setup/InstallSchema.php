@@ -8,11 +8,11 @@
 
 namespace Girginsoft\Shopfinder\Setup;
 
+use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Db\Ddl\Table;
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
-use Magento\Framework\DB\Adapter\AdapterInterface;
 
 /**
  * Class InstallSchema
@@ -58,12 +58,6 @@ class InstallSchema implements InstallSchemaInterface
                 ['nullable' => true],
                 'Image'
             )->addColumn(
-                'store_view',
-                Table::TYPE_TEXT,
-                10,
-                ['nullable' => false],
-                'Store View'
-            )->addColumn(
                 'creation_time',
                 Table::TYPE_TIMESTAMP,
                 null,
@@ -86,6 +80,41 @@ class InstallSchema implements InstallSchemaInterface
             )->setComment(
                 'Shopfinder shop table'
             );
+        $installer->getConnection()->createTable($table);
+
+        $table = $installer->getConnection()->newTable(
+            $installer->getTable('shopfinder_shops_store')
+            )->addColumn(
+                'shop_id',
+                Table::TYPE_INTEGER,
+                null,
+                ['nullable' => false, 'unsigned' => true, 'primary' => true],
+                'Shop ID'
+            )->addColumn(
+                'store_id',
+                Table::TYPE_SMALLINT,
+                null,
+                ['unsigned' => true, 'nullable' => false, 'primary' => true],
+                'Store ID'
+            )->addIndex(
+                $installer->getIdxName('shopfinder_shops_store', ['store_id']),
+                ['store_id']
+            )->addForeignKey(
+                $installer->getFkName('sf_s', 'shop_id', 'sf_shs', 'shop_id'),
+                'shop_id',
+                $installer->getTable('shopfinder_shops'),
+                'shop_id',
+                Table::ACTION_CASCADE
+            )->addForeignKey(
+                $installer->getFkName('sf_st', 'store_id', 'st', 'store_id'),
+                'store_id',
+                $installer->getTable('store'),
+                'store_id',
+               Table::ACTION_CASCADE
+            )->setComment(
+                'Shop Store Linkage Table'
+        );
+
         $installer->getConnection()->createTable($table);
         $installer->endSetup();
     }

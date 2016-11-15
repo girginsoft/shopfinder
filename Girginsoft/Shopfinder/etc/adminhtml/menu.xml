@@ -6,7 +6,7 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
     <menu>
-        <add id="Girginsoft_Shopfinder::girginsoft_shop_index" title="Shopfinder" module="Girginsoft_Shopfinder"  sortOrder="20" dependsOnModule="Girginsoft_Shopfinder" action="shopfinder/shop/index" resource="Girginsoft_Shopfinder::girginsoft_shop_index"/>
+        <add id="Girginsoft_Shopfinder::girginsoft_shop_index" sortOrder="150" parent="Magento_Backend::content_elements" title="Shopfinder" module="Girginsoft_Shopfinder" dependsOnModule="Girginsoft_Shopfinder" action="shopfinder/shop/index" resource="Girginsoft_Shopfinder::girginsoft_shop_index"/>
 <!--AddMenu-->
     </menu>
 </config>

@@ -14,8 +14,8 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
 
         parent::_construct();
 
-        $this->buttonList->update('save', 'label', __('Save Block'));
-        $this->buttonList->update('delete', 'label', __('Delete Block'));
+        $this->buttonList->update('save', 'label', __('Save Shop'));
+        $this->buttonList->update('delete', 'label', __('Delete Shop'));
 
         $this->buttonList->add(
             'saveandcontinue',
@@ -48,9 +48,9 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
     public function getHeaderText()
     {
         if ($this->_coreRegistry->registry('checkmodule_checkmodel')->getId()) {
-            return __("Edit Item '%1'", $this->escapeHtml($this->_coreRegistry->registry('checkmodule_checkmodel')->getTitle()));
+            return __("Edit Shop '%1'", $this->escapeHtml($this->_coreRegistry->registry('checkmodule_checkmodel')->getTitle()));
         } else {
-            return __('New Item');
+            return __('New Shop');
         }
     }
 }

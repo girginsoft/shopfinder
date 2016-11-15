@@ -35,7 +35,17 @@ class Index extends Action
     {
 		$this->resultPage = $this->resultPageFactory->create();
 		$this->resultPage->setActiveMenu('Girginsoft_Shop::shop');
-		$this->resultPage ->getConfig()->getTitle()->set((__('Shop')));
+		$this->resultPage ->getConfig()->getTitle()->set((__('Shopfinder')));
 		return $this->resultPage;
+    }
+
+    /**
+     * Check permission via ACL resource
+     */
+    protected function _isAllowed()
+    {
+        return true;
+
+        return $this->_authorization->isAllowed('Girginsoft_Shopfinder::shop');
     }
 }
